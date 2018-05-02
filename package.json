@@ -1,0 +1,14 @@
+{
+  "name": "vuex-ignite",
+  "description": "Firebase bindings for Vuex",
+  "version": "0.1.0",
+  "private": true,
+  "peerDependencies": {
+    "firebase": "^4.13.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "firebase": "^4.13.1",
+    "vuex": "^3.0.1"
+  }
+}

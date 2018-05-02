@@ -29,7 +29,7 @@ export default new Vuex.Store(ignite({
 ```
 
 This automatically adds the necessary Firebase mutations and action along with a plugin that will automatically
-dispatch that action when the store is ready.
+dispatch that action when the store is ready to set everything up.
 
 The `ignite` function will read information about how you want to bind data from the `firebase` object in the store
 options. The simplest way is to provide the name of which to bind to and a reference to the data.
@@ -73,7 +73,8 @@ Notice that the key for the list item is available as the `.key` property.
 By default, this will bind the reference as an array to a new `tasks` array in the store's state. Querying is also
 supported, meaning you could replace `db.ref('myTasks')` with `db.ref('myTasks').orderByValue()` for instance.
 
-If you didn't want to bind tasks as an array but as an object to, you must replace the definition with this:
+If you didn't want to bind tasks as an array but as an object instead, you must replace the definition with something
+like this:
 
 ```js
 firebase: {
@@ -84,13 +85,13 @@ firebase: {
 }
 ```
 
-You can also replace the type with `String`, `Boolean`, `Number`, or `Array` to give a nicer default value. As with
+You can also replace the type with `String`, `Boolean`, `Number`, or `Array` to give a nicer default value. Similarly to
 `.key`, if the value is primitive, the value will be stored in `.value`.
 
 ### User Based Bindings
 Now let's imagine that the tasks reference needs to be based on the currently authenticated Firebase user. Instead of
-explicitly defining of database references, we can define them as functions that return references. These functions take
-the current user as their first parameter. Here's an example:
+explicitly defining the database references, we can define them as functions that return references. These functions
+take the current user as their first parameter. Here's an example:
 
 ```js
 const auth = app.auth();
@@ -109,8 +110,9 @@ firebase: {
 Every time the authentication state changes this reference will be redetermined and bound to `tasks`.
 
 Notice that we also define a `user` property and bind the Firebase Auth instance to it. This doesn't have to be called
-`user`, but it does have to be included for these functional bindings to work. This has the side effect of granting access
-to the currently authenticated user in the store or anywhere else in your application.
+`user`, but it does have to be included for these functional bindings to work. This has the side effect of granting
+access to the currently authenticated user in the store or anywhere else in your application by accessing the `user`
+object in the store's state.
 
 ### Updating Data
 Every time a reference is bound to the store's state, a corresponding `$firebaseRef` variable is set in the store

@@ -10,6 +10,11 @@ npm install vuex-ignite
 yarn add vuex-ignite
 ```
 
+...or with a script tag:
+```html
+<script src="https://unpkg.com/vuex-ignite"></script>
+```
+
 ## Usage
 First *ignite* the store by importing the `ignite` function and wrapping the store options with it.
 
@@ -27,6 +32,8 @@ export default new Vuex.Store(ignite({
     }
 }));
 ```
+
+If you've used a script tag instead, the `ignite` function will be available as `window.VuexIgnite.ignite`.
 
 This automatically adds the necessary Firebase mutations and action along with a plugin that will automatically
 dispatch that action when the store is ready to set everything up.

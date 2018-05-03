@@ -1,5 +1,5 @@
 /*!
- * VuexIgnite v0.1.1
+ * VuexIgnite v1.0.0
  * Copyright (c) 2018 MrBBot
  * Licensed under the MIT license.
  */

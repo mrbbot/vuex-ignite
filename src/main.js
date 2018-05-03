@@ -116,7 +116,6 @@ export function ignite(storeOptions) {
         };
 
         const functionalBindings = [];
-        const currentFunctionalRefs = [];
         for(let binding of normalisedBindings) {
             if(isFunction(binding.ref)) functionalBindings.push(binding);
             else bind(binding.type, binding.ref, binding.name);
@@ -125,14 +124,10 @@ export function ignite(storeOptions) {
         if(authBinding) {
             // noinspection JSUnresolvedFunction
             authBinding.auth.onAuthStateChanged(user => {
-                for(let functionalRef of currentFunctionalRefs) {
-                    // noinspection JSUnresolvedFunction
-                    functionalRef.off();
-                    delete store.$firebaseRefs[functionalRef.name];
-                }
-                currentFunctionalRefs.splice(0, currentFunctionalRefs.length);
-
                 for(let functionalBinding of functionalBindings) {
+                    if(functionalBinding.currentRef) functionalBinding.currentRef.off();
+                    if(store.$firebaseRefs[functionalBinding.name]) delete store.$firebaseRefs[functionalBinding.name];
+
                     if(!user) {
                         commit(FIREBASE_SET, {
                             key: functionalBinding.name,
@@ -140,7 +135,7 @@ export function ignite(storeOptions) {
                         });
                     } else {
                         const ref = functionalBinding.ref(user);
-                        currentFunctionalRefs.push(ref);
+                        functionalBinding.currentRef = ref;
                         bind(functionalBinding.type, ref, functionalBinding.name);
                     }
                 }

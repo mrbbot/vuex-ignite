@@ -53,7 +53,7 @@ In a Vue component:
 ```vue
 <template>
     <ul>
-        <li v-for="task in tasks" :key="item['.key']">{{task}}</li>
+        <li v-for="task in tasks" :key="task['.key']">{{task}}</li>
     </ul>
 </template>
 

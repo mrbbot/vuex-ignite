@@ -1,7 +1,7 @@
 {
   "name": "vuex-ignite",
   "description": "Firebase bindings for Vuex",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "MrBBot",
   "repository": "mrbbot/vuex-ignite",
   "main": "dist/vuex-ignite.js",

@@ -15,9 +15,9 @@
     "src"
   ],
   "scripts": {
-    "build": "microbundle",
-    "dev": "microbundle watch",
-    "prepublishOnly": "microbundle"
+    "build": "microbundle --name VuexIgnite",
+    "dev": "microbundle watch --name VuexIgnite",
+    "prepublishOnly": "microbundle --name VuexIgnite"
   },
   "peerDependencies": {
     "firebase": "^4.13.1",

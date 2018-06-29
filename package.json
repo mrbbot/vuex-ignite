@@ -4,32 +4,28 @@
   "version": "1.0.0",
   "author": "MrBBot",
   "repository": "mrbbot/vuex-ignite",
-  "main": "dist/vuex-ignite.common.js",
-  "module": "dist/vuex-ignite.esm.js",
-  "unpkg": "dist/vuex-ignite.js",
-  "browser": "dist/vuex-ignite.js",
+  "main": "dist/vuex-ignite.js",
+  "umd:main": "dist/vuex-ignite.umd.js",
+  "module": "dist/vuex-ignite.m.js",
+  "source": "src/main.js",
+  "unpkg": "dist/vuex-ignite.umd.js",
+  "browser": "dist/vuex-ignite.umd.js",
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
-    "prepublishOnly": "node build/build.js"
+    "build": "microbundle",
+    "dev": "microbundle watch",
+    "prepublishOnly": "microbundle"
   },
   "peerDependencies": {
     "firebase": "^4.13.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "chalk": "^2.4.1",
     "firebase": "^4.13.1",
-    "lodash": "^4.17.10",
-    "rollup": "^0.58.2",
-    "rollup-plugin-babel": "^3.0.4",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "uglify-es": "^3.3.9",
+    "microbundle": "^0.4.4",
     "vuex": "^3.0.1"
   },
   "license": "MIT"
